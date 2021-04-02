@@ -1,5 +1,5 @@
-package controllers.employees;
-
+package controllers.student;
+//実装済み
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
+import models.Student;
 
 /**
  * Servlet implementation class EmployeesNewServlet
  */
-@WebServlet("/employees/new")
-public class EmployeesNewServlet extends HttpServlet {
+@WebServlet("/students/new")
+public class StudentsNewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeesNewServlet() {
+    public StudentsNewServlet() {
         super();
     }
 
@@ -30,9 +30,9 @@ public class EmployeesNewServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("_token", request.getSession().getId());
-        request.setAttribute("employee", new Employee());
+        request.setAttribute("student", new Student());
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/new.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/students/new.jsp");
         rd.forward(request, response);
     }
 

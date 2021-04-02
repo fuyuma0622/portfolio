@@ -9,12 +9,69 @@
 
     </div>
 </c:if>
-<label for="code">社員番号</label><br />
-<input type="text" name="code" value="${employee.code}" />
+<label for="code">ID</label><br />
+<input type="text" name="code" value="${student.code}" />
 <br /><br />
 
+<label for="grade">学年</label><br />
+<select size="1" name="grade">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="教員">教員</option>
+</select>
+<br /><br />
+
+<label for="faculty">学部</label><br />
+<select size="1" name="faculty" id="genre" onchange="createMenu(this.value)">
+<option value="文学部">文学部</option>
+<option value="経済学部">経済学部</option>
+<option value="法学部">法学部</option>
+<option value="教育学部">教育学部</option>
+</select>
+<br /><br />
+
+
+<label for="department">学科</label><br />
+<select size="1" name="department" id="departmentList" disabled>
+<option disabled selected>学科を選択してください</option>
+</select>
+<br /><br />
+
+<%-- javaの記述 --%>
+
+<script>
+const departmentMenu =
+      {
+        "文学部": ["日本文学科", "英文学科", "フランス文学科"],
+        "経済学部": ["経済学科", "現代経済デザイン学科"],
+        "法学部": ["法学科"],
+        "教育学部": ["教育学科", "心理学科"]
+      };
+
+
+function createMenu(selectGenre){
+
+  let departmentList = document.getElementById('departmentList');
+  departmentList.disabled = false;
+  departmentList.innerHTML = '';
+  let option = document.createElement('option');
+  option.innerHTML = '学科を選択してください';
+  option.defaultSelected = true;
+  option.disabled = true;
+  departmentList.appendChild(option);
+
+  departmentMenu[selectGenre].forEach( menu => {
+    let option = document.createElement('option');
+    option.innerHTML = menu;
+    departmentList.appendChild(option);
+  });
+}
+</script>
+
 <label for="name">氏名</label><br />
-<input type="text" name="name" value="${employee.name}" />
+<input type="text" name="name" value="${student.name}" />
 <br /><br />
 
 <label for="password">パスワード</label><br />
@@ -23,8 +80,8 @@
 
 <label for="admin_flag">権限</label><br />
 <select name="admin_flag">
-    <option value="0"<c:if test="${employee.admin_flag == 0}"> selected</c:if>>一般</option>
-    <option value="1"<c:if test="${employee.admin_flag == 1}"> selected</c:if>>管理者</option>
+    <option value="0"<c:if test="${student.admin_flag == 0}"> selected</c:if>>生徒</option>
+    <option value="1"<c:if test="${student.admin_flag == 1}"> selected</c:if>>先生</option>
 </select>
 <br /><br />
 

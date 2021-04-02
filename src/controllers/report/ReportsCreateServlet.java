@@ -1,5 +1,5 @@
 package controllers.report;
-
+//実装済み
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
 import models.Report;
+import models.Student;
 import models.validators.ReportValidator;
 import utils.DBUtil;
 
@@ -42,7 +42,9 @@ public class ReportsCreateServlet extends HttpServlet {
 
             Report r = new Report();
 
-            r.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+            r.setStudent((Student)request.getSession().getAttribute("login_student"));
+
+
 
             Date report_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("report_date");
@@ -75,7 +77,7 @@ public class ReportsCreateServlet extends HttpServlet {
                 em.close();
                 request.getSession().setAttribute("flush", "登録が完了しました。");
 
-                response.sendRedirect(request.getContextPath() + "/reports/index");
+                response.sendRedirect(request.getContextPath() + "/");
             }
         }
     }

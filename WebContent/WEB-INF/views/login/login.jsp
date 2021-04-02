@@ -4,7 +4,7 @@
     <c:param name="content">
         <c:if test="${hasError}">
             <div id="flush_error">
-                社員番号かパスワードが間違っています。
+                IDかパスワードが間違っています。
             </div>
         </c:if>
         <c:if test="${flush != null}">
@@ -14,7 +14,7 @@
         </c:if>
         <h2>ログイン</h2>
         <form method="POST" action="<c:url value='/login' />">
-            <label for="code">社員番号</label><br />
+            <label for="code">ID</label><br />
             <input type="text" name="code" value="${code}" />
             <br /><br />
 
@@ -24,6 +24,8 @@
 
             <input type="hidden" name="_token" value="${_token}" />
             <button type="submit">ログイン</button>
+
+            <p><a href="<c:url value='/students/new' />">初めての方はこちら</a></p>
         </form>
     </c:param>
 </c:import>

@@ -1,5 +1,5 @@
-package controllers.employees;
-
+package controllers.student;
+//実装済み
 import java.io.IOException;
 import java.util.List;
 
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
+import models.Student;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class EmployeesIndexServlet
+ * Servlet implementation class StudentsIndexServlet
  */
-@WebServlet("/employees/index")
-public class EmployeesIndexServlet extends HttpServlet {
+@WebServlet("/students/index")
+public class StudentsIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeesIndexServlet() {
+    public StudentsIndexServlet() {
         super();
     }
 
@@ -32,31 +32,34 @@ public class EmployeesIndexServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         EntityManager em = DBUtil.createEntityManager();
 
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(NumberFormatException e) { }
-        List<Employee> employees = em.createNamedQuery("getAllEmployees", Employee.class)
+        List<Student> students = em.createNamedQuery("getAllStudents", Student.class)
                                      .setFirstResult(15 * (page - 1))
                                      .setMaxResults(15)
                                      .getResultList();
 
-        long employees_count = (long)em.createNamedQuery("getEmployeesCount", Long.class)
+        long students_count = (long)em.createNamedQuery("getStudentsCount", Long.class)
                                        .getSingleResult();
 
         em.close();
 
-        request.setAttribute("employees", employees);
-        request.setAttribute("employees_count", employees_count);
+        request.setAttribute("students", students);
+        request.setAttribute("students_count", students_count);
         request.setAttribute("page", page);
+
+
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/students/index.jsp");
         rd.forward(request, response);
     }
 }

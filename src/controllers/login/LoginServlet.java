@@ -1,5 +1,5 @@
 package controllers.login;
-
+//実装済み
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
+import models.Student;
 import utils.DBUtil;
 import utils.EncryptUtil;
 
@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
         String code = request.getParameter("code");
         String plain_pass = request.getParameter("password");
 
-        Employee e = null;
+        Student e = null;
 
         if(code != null && !code.equals("") && plain_pass != null && !plain_pass.equals("")) {
             EntityManager em = DBUtil.createEntityManager();
@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 
             // 社員番号とパスワードが正しいかチェックする
             try {
-                e = em.createNamedQuery("checkLoginCodeAndPassword", Employee.class)
+                e = em.createNamedQuery("checkLoginCodeAndPassword", Student.class)
                       .setParameter("code", code)
                       .setParameter("pass", password)
                       .getSingleResult();
@@ -91,7 +91,7 @@ public class LoginServlet extends HttpServlet {
             rd.forward(request, response);
         } else {
             // 認証できたらログイン状態にしてトップページへリダイレクト
-            request.getSession().setAttribute("login_employee", e);
+            request.getSession().setAttribute("login_student", e);
 
             request.getSession().setAttribute("flush", "ログインしました。");
             response.sendRedirect(request.getContextPath() + "/");

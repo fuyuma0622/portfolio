@@ -1,5 +1,5 @@
-package controllers.employees;
-
+package controllers.student;
+//実装済み
 import java.io.IOException;
 import java.sql.Timestamp;
 
@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
+import models.Student;
 import utils.DBUtil;
 
 /**
  * Servlet implementation class EmployeesDestroyServlet
  */
-@WebServlet("/employees/destroy")
-public class EmployeesDestroyServlet extends HttpServlet {
+@WebServlet("/students/destroy")
+public class StudentsDestroyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeesDestroyServlet() {
+    public StudentsDestroyServlet() {
         super();
     }
 
@@ -35,7 +35,7 @@ public class EmployeesDestroyServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Employee e = em.find(Employee.class, (Integer)(request.getSession().getAttribute("employee_id")));
+            Student e = em.find(Student.class, (Integer)(request.getSession().getAttribute("student_id")));
             e.setDelete_flag(1);
             e.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
@@ -44,7 +44,7 @@ public class EmployeesDestroyServlet extends HttpServlet {
             em.close();
             request.getSession().setAttribute("flush", "削除が完了しました。");
 
-            response.sendRedirect(request.getContextPath() + "/employees/index");
+            response.sendRedirect(request.getContextPath() + "/students/index");
         }
     }
 

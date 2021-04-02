@@ -11,7 +11,7 @@
                     <tbody>
                         <tr>
                             <th>氏名</th>
-                            <td><c:out value="${report.employee.name}" /></td>
+                            <td><c:out value="${report.student.name}" /></td>
                         </tr>
                         <tr>
                             <th>日付</th>
@@ -38,7 +38,7 @@
                     </tbody>
                 </table>
 
-                <c:if test="${sessionScope.login_employee.id == report.employee.id}">
+                <c:if test="${sessionScope.login_student.id == report.student.id}">
                     <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>
                 </c:if>
             </c:when>
@@ -47,6 +47,6 @@
             </c:otherwise>
         </c:choose>
 
-        <p><a href="<c:url value="/reports/index" />">一覧に戻る</a></p>
+        <p><a href="<c:url value="/" />">マイページに戻る</a></p>
     </c:param>
 </c:import>

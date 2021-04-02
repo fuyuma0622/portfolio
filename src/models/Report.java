@@ -1,5 +1,5 @@
 package models;
-
+//実装済み
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -15,7 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "reports")
+@Table(name = "reports5")
 @NamedQueries({
     @NamedQuery(
         name = "getAllReports",
@@ -27,12 +27,18 @@ import javax.persistence.Table;
     ),
     @NamedQuery(
         name = "getMyAllReports",
-        query = "SELECT r FROM Report AS r WHERE r.employee = :employee ORDER BY r.id DESC"
+        query = "SELECT r FROM Report AS r WHERE r.student = :student ORDER BY r.id DESC"
     ),
     @NamedQuery(
         name = "getMyReportsCount",
-        query = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :employee"
-    )
+        query = "SELECT COUNT(r) FROM Report AS r WHERE r.student = :student"
+    ),
+    @NamedQuery(
+            name = "getfavoriteReports",
+            query = "SELECT r FROM Report AS r WHERE r.student in (SELECT f.etudiant FROM Follow AS f WHERE f.teacher= :teacher)")
+
+
+
 })
 @Entity
 public class Report {
@@ -42,8 +48,9 @@ public class Report {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
+
 
     @Column(name = "report_date", nullable = false)
     private Date report_date;
@@ -61,6 +68,8 @@ public class Report {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
+
+
     public Integer getId() {
         return id;
     }
@@ -69,12 +78,12 @@ public class Report {
         this.id = id;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public Date getReport_date() {
@@ -116,4 +125,6 @@ public class Report {
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
     }
+
+
 }

@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import models.Employee;
+import models.Student;
 import utils.DBUtil;
 
-public class EmployeeValidator {
-    public static List<String> validate(Employee e, Boolean codeDuplicateCheckFlag, Boolean passwordCheckFlag) {
+public class StudentValidator {
+    public static List<String> validate(Student e, Boolean codeDuplicateCheckFlag, Boolean passwordCheckFlag) {
         List<String> errors = new ArrayList<String>();
 
         String code_error = validateCode(e.getCode(), codeDuplicateCheckFlag);
@@ -27,6 +27,11 @@ public class EmployeeValidator {
             errors.add(password_error);
         }
 
+
+
+
+
+
         return errors;
     }
 
@@ -40,10 +45,10 @@ public class EmployeeValidator {
         // すでに登録されている社員番号との重複チェック
         if(codeDuplicateCheckFlag) {
             EntityManager em = DBUtil.createEntityManager();
-            long employees_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class).setParameter("code", code).getSingleResult();
+            long students_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class).setParameter("code", code).getSingleResult();
             em.close();
-            if(employees_count > 0) {
-                return "入力された社員番号の情報はすでに存在しています。";
+            if(students_count > 0) {
+                return "入力されたIDの情報はすでに存在しています。";
             }
         }
 
@@ -67,4 +72,11 @@ public class EmployeeValidator {
         }
         return "";
     }
+
+
+
+
+
+
+
 }

@@ -1,5 +1,5 @@
 package controllers.report;
-
+//実装済み
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -64,7 +64,7 @@ public class ReportsUpdateServlet extends HttpServlet {
 
                 request.getSession().removeAttribute("report_id");
 
-                response.sendRedirect(request.getContextPath() + "/reports/index");
+                response.sendRedirect(request.getContextPath() + "/");
             }
         }
     }

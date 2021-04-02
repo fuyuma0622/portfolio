@@ -1,5 +1,5 @@
 package controllers.toppage;
-
+//実装済み
 import java.io.IOException;
 import java.util.List;
 
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
 import models.Report;
+import models.Student;
 import utils.DBUtil;
 
 /**
@@ -35,7 +35,9 @@ public class TopPageIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
+        Student login_student = (Student)request.getSession().getAttribute("login_student");
+
+        Student mynumber = em.find(Student.class,Integer.parseInt(login_student.getCode()));
 
         int page;
         try{
@@ -43,19 +45,30 @@ public class TopPageIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
+
         List<Report> reports = em.createNamedQuery("getMyAllReports", Report.class)
-                                  .setParameter("employee", login_employee)
+                                  .setParameter("student", login_student)
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
                                   .getResultList();
 
+        List<Report> follow_reports = em.createNamedQuery("getfavoriteReports", Report.class)
+                                          .setParameter("teacher", mynumber)
+                                          .setFirstResult(15 * (page - 1))
+                                          .setMaxResults(15)
+                                          .getResultList();
+
+
         long reports_count = (long)em.createNamedQuery("getMyReportsCount", Long.class)
-                                     .setParameter("employee", login_employee)
+                                     .setParameter("student", login_student)
                                      .getSingleResult();
+
+
 
         em.close();
 
         request.setAttribute("reports", reports);
+        request.setAttribute("follow_reports", follow_reports);
         request.setAttribute("reports_count", reports_count);
         request.setAttribute("page", page);
 

@@ -1,5 +1,5 @@
 package models;
-
+//実装済み
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -11,27 +11,27 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "employees")
+@Table(name = "students_alfa9")
 @NamedQueries({
     @NamedQuery(
-        name = "getAllEmployees",
-        query = "SELECT e FROM Employee AS e ORDER BY e.id DESC"
+        name = "getAllStudents",
+        query = "SELECT e FROM Student AS e ORDER BY e.id DESC"
     ),
     @NamedQuery(
-        name = "getEmployeesCount",
-        query = "SELECT COUNT(e) FROM Employee AS e"
+        name = "getStudentsCount",
+        query = "SELECT COUNT(e) FROM Student AS e"
     ),
     @NamedQuery(
         name = "checkRegisteredCode",
-        query = "SELECT COUNT(e) FROM Employee AS e WHERE e.code = :code"
+        query = "SELECT COUNT(e) FROM Student AS e WHERE e.code = :code"
     ),
     @NamedQuery(
         name = "checkLoginCodeAndPassword",
-        query = "SELECT e FROM Employee AS e WHERE e.delete_flag = 0 AND e.code = :code AND e.password = :pass"
+        query = "SELECT e FROM Student AS e WHERE e.delete_flag = 0 AND e.code = :code AND e.password = :pass"
     )
 })
 @Entity
-public class Employee {
+public class Student {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +39,15 @@ public class Employee {
 
     @Column(name = "code", nullable = false, unique = true)
     private String code;
+
+    @Column(name = "grade", nullable = false)
+    private String grade;
+
+    @Column(name = "faculty", nullable = false)
+    private String faculty;
+
+    @Column(name = "department", nullable = false)
+    private String department;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -58,8 +67,6 @@ public class Employee {
     @Column(name = "delete_flag", nullable = false)
     private Integer delete_flag;
 
-
-
     //ゲッターセッター
     public Integer getId() {
         return id;
@@ -75,6 +82,30 @@ public class Employee {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getName() {
@@ -124,5 +155,5 @@ public class Employee {
     public void setDelete_flag(Integer delete_flag) {
         this.delete_flag = delete_flag;
     }
-}
 
+}
