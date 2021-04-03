@@ -8,6 +8,68 @@
             </div>
         </c:if>
         <h2>生徒　一覧</h2>
+
+        <%-- 検索ボックス配置 --%>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <div class="search-area">
+            <%--<script src="search.js"></script>--%>
+            <form method="get" action="">
+                <select id="grade" name="">
+                        <option value="">学年を選んでください
+                        <option value="1年">1年
+                        <option value="2年">2年
+                        <option value="3年">3年
+                        <option value="4年">4年
+                </select>
+                <select id="faculty" name="">
+                        <option value="">学部を選んでください
+                        <option value="文学部">文学部
+                        <option value="経済学部">経済学部
+                        <option value="法学部">法学部
+                        <option value="教育学部">教育学部
+                </select>
+            <input type="button" value="絞り込む" id="button"> <input type="button" value="すべて表示" id="button2">
+            </form>
+        </div>
+
+
+        <script>$(function(){
+            $("#button").bind("click",function(){
+
+                var abc , def;
+                            abc = $("#grade").val();
+                            def = $("#faculty").val();
+                            re = new RegExp(abc);
+                            re2 = new RegExp(def);
+
+            $("#student_list tbody tr").each(function(){
+                var txt = $(this).find("td").text();
+                if(txt.match(re) != null){
+
+                      if(txt.match(re2) != null){
+                          $(this).show();
+                          }else{
+                              $(this).hide();
+                              }
+                        }else{
+                            $(this).hide();
+                            }
+                });
+            });
+
+            $("#button2").bind("click",function(){
+                $("#student_list tr").show();
+                });
+    });</script>
+
+
+
+
+
+
+        <%-- ここからテーブル --%>
+
         <table id="student_list">
             <tbody>
                 <tr>

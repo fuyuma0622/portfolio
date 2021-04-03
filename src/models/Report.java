@@ -35,9 +35,12 @@ import javax.persistence.Table;
     ),
     @NamedQuery(
             name = "getfavoriteReports",
-            query = "SELECT r FROM Report AS r WHERE r.student in (SELECT f.etudiant FROM Follow AS f WHERE f.teacher= :teacher)")
-
-
+            query = "SELECT r FROM Report AS r WHERE r.student in (SELECT f.etudiant FROM Follow AS f WHERE f.teacher= :teacher)"
+    ),
+    @NamedQuery(
+            name = "getfavoriteReportsCount",
+            query = "SELECT COUNT(r) FROM Report AS r WHERE r.student in (SELECT f.etudiant FROM Follow AS f WHERE f.teacher= :teacher)"
+        )
 
 })
 @Entity

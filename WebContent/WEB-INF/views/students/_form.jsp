@@ -15,10 +15,10 @@
 
 <label for="grade">学年</label><br />
 <select size="1" name="grade">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
+<option value="1年">1年</option>
+<option value="2年">2年</option>
+<option value="3年">3年</option>
+<option value="4年">4年</option>
 <option value="教員">教員</option>
 </select>
 <br /><br />

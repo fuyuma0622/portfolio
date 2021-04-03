@@ -63,13 +63,16 @@ public class TopPageIndexServlet extends HttpServlet {
                                      .setParameter("student", login_student)
                                      .getSingleResult();
 
-
+        long follow_reports_count =(long)em.createNamedQuery("getfavoriteReportsCount", Long.class)
+                                            .setParameter("teacher", mynumber)
+                                            .getSingleResult();
 
         em.close();
 
         request.setAttribute("reports", reports);
         request.setAttribute("follow_reports", follow_reports);
         request.setAttribute("reports_count", reports_count);
+        request.setAttribute("follow_reports_count",follow_reports_count);
         request.setAttribute("page", page);
 
         if(request.getSession().getAttribute("flush") != null) {
