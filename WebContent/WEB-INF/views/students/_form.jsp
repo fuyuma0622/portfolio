@@ -25,6 +25,7 @@
 
 <label for="faculty">学部</label><br />
 <select size="1" name="faculty" id="genre" onchange="createMenu(this.value)">
+<option value="">学部を選択してください</option>
 <option value="文学部">文学部</option>
 <option value="経済学部">経済学部</option>
 <option value="法学部">法学部</option>

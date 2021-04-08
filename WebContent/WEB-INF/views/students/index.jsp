@@ -101,7 +101,16 @@
                             </c:choose>
                         </td>
                         <td>
-                             <a href="<c:url value='/students/follow?id=${student.id}' />">フォローする</a>
+                            <c:choose>
+                                 <c:when test="${student.delete_flag == 1}">
+                                    （削除済み）
+                                 </c:when>
+                                 <c:otherwise>
+
+                                     <a href="<c:url value='/students/follow?id=${student.id}' />">フォローする</a>
+
+                                 </c:otherwise>
+                             </c:choose>
                         </td>
                     </tr>
                 </c:forEach>
@@ -124,7 +133,7 @@
 
         <%-- 後で表示の条件付ける --%>
 
-        <p><a href="<c:url value='/login' />">ログイン画面に戻る</a></p>
+        <p><a href="<c:url value='/login' />">マイページに戻る</a></p>
 
     </c:param>
 </c:import>

@@ -5,12 +5,12 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${student != null}">
-                <h2>id : ${student.id} の従業員情報　詳細ページ</h2>
+                <h2>id : ${student.id} の生徒情報　詳細ページ</h2>
 
                 <table>
                     <tbody>
                         <tr>
-                            <th>社員番号</th>
+                            <th>ID</th>
                             <td><c:out value="${student.code}" /></td>
                         </tr>
                         <tr>
@@ -21,8 +21,8 @@
                             <th>権限</th>
                             <td>
                                 <c:choose>
-                                    <c:when test="${student.admin_flag == 1}">管理者</c:when>
-                                    <c:otherwise>一般</c:otherwise>
+                                    <c:when test="${student.admin_flag == 1}">先生</c:when>
+                                    <c:otherwise>生徒</c:otherwise>
                                 </c:choose>
                             </td>
                         </tr>
@@ -40,8 +40,9 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <p><a href="<c:url value='/students/edit?id=${student.id}' />">この従業員情報を編集する</a></p>
+                <c:if test="${sessionScope.login_student.id == student.id}">
+                <p><a href="<c:url value='/students/edit?id=${student.id}' />">この情報を編集する</a></p>
+                </c:if>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

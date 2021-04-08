@@ -66,6 +66,9 @@ public class StudentsUpdateServlet extends HttpServlet {
             }
 
             e.setName(request.getParameter("name"));
+            e.setGrade(request.getParameter("grade"));
+            e.setFaculty(request.getParameter("faculty"));
+            e.setDepartment(request.getParameter("department"));
             e.setAdmin_flag(Integer.parseInt(request.getParameter("admin_flag")));
             e.setUpdated_at(new Timestamp(System.currentTimeMillis()));
             e.setDelete_flag(0);
@@ -88,7 +91,7 @@ public class StudentsUpdateServlet extends HttpServlet {
 
                 request.getSession().removeAttribute("student_id");
 
-                response.sendRedirect(request.getContextPath() + "/studnets/index");
+                response.sendRedirect(request.getContextPath() + "/");
             }
         }
     }

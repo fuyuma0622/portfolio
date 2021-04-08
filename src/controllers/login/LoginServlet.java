@@ -56,6 +56,7 @@ public class LoginServlet extends HttpServlet {
         String code = request.getParameter("code");
         String plain_pass = request.getParameter("password");
 
+
         Student e = null;
 
         if(code != null && !code.equals("") && plain_pass != null && !plain_pass.equals("")) {

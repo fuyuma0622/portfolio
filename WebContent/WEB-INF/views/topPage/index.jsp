@@ -8,12 +8,12 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>レポート管理システムへようこそ</h2>
+        <h2>生徒課題広場ようこそ</h2>
 
 
         <c:if test="${sessionScope.login_student.admin_flag == 1}">
 
-        <h3>【担当生徒の日報一覧】</h3>
+        <h3>【担当生徒のレポート一覧】</h3>
 
         <table id="report_list">
             <tbody>
@@ -21,7 +21,7 @@
                     <th class="report_name">氏名</th>
                     <th class="report_date">日付</th>
                     <th class="report_title">タイトル</th>
-                    <th class="report_action">操作</th>
+                    <th class="report_action">操作1</th>
                 </tr>
                 <c:forEach var="report" items="${follow_reports}" varStatus="status">
                     <tr class="row${status.count % 2}">
@@ -50,8 +50,9 @@
 
         </c:if>
 
+        <c:if test="${sessionScope.login_student.admin_flag == 0}">
 
-        <h3>【自分の日報一覧】</h3>
+        <h3>【自分のレポート一覧】</h3>
         <table id="report_list">
             <tbody>
                 <tr>
@@ -84,6 +85,14 @@
                 </c:choose>
             </c:forEach>
         </div>
+
         <p><a href="<c:url value='/reports/new' />">新規レポートの登録</a></p>
+
+        </c:if>
+
+
+        <p><a href="<c:url value='/students/edit?id=${sessionScope.login_student.id}' />">自分の基本情報を編集する</a></p>
+
+
     </c:param>
 </c:import>

@@ -60,8 +60,8 @@ public class LoginFilter implements Filter {
                             return;
                             }
 
-                        // 従業員管理の機能は管理者のみが閲覧できるようにする
-                        if(servlet_path.matches("/students.*") && e.getAdmin_flag() == 0) {
+                        // すべての人が入れるようにする。
+                        if(servlet_path.matches("/students.*") && e.getAdmin_flag() == 2) {
                             ((HttpServletResponse)response).sendRedirect(context_path + "/");
                             return;
                             }

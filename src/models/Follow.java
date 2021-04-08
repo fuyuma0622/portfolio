@@ -6,10 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Table(name = "follows3")
+@NamedQueries({
+    @NamedQuery(
+        name = "removeFollow",
+        query = "SELECT f FROM Follow AS f WHERE f.teacher = :teacher AND f.etudiant = :etudiant"
+    )
 
+
+})
 @Entity
 public class Follow {
     @Id

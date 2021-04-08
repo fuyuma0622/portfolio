@@ -44,7 +44,7 @@ public class StudentsDestroyServlet extends HttpServlet {
             em.close();
             request.getSession().setAttribute("flush", "削除が完了しました。");
 
-            response.sendRedirect(request.getContextPath() + "/students/index");
+            response.sendRedirect(request.getContextPath() + "/logout");
         }
     }
 

@@ -22,6 +22,11 @@ public class StudentValidator {
             errors.add(name_error);
         }
 
+        String faculty_error = validateFaculty(e.getFaculty());
+        if(!faculty_error.equals("")) {
+            errors.add(faculty_error);
+        }
+
         String password_error = validatePassword(e.getPassword(), passwordCheckFlag);
         if(!password_error.equals("")) {
             errors.add(password_error);
@@ -63,6 +68,15 @@ public class StudentValidator {
 
         return "";
     }
+
+    private static String validateFaculty(String faculty) {
+        if(faculty == null || faculty.equals("")) {
+            return "学部を選択してください。";
+        }
+
+        return "";
+    }
+
 
     // パスワードの必須入力チェック
     private static String validatePassword(String password, Boolean passwordCheckFlag) {
