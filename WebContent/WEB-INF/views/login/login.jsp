@@ -25,7 +25,25 @@
             <input type="hidden" name="_token" value="${_token}" />
             <button type="submit">ログイン</button>
 
-            <p><a href="<c:url value='/students/new' />">初めての方はこちら</a></p>
+            <p><a href="<c:url value='/students/new' />">初めてご利用の生徒はこちら</a></p>
+
         </form>
+
+        <script type="text/javascript"><!--
+      function myEnter(){
+       myPassWord=prompt("パスワードを入力してください","");
+       if ( myPassWord == "admin" ){
+         location.href="<c:url value='/students/new2' />";
+       }else{
+         alert( "パスワードが違います!" );
+        }
+      }
+     // --></script>
+
+    <form>
+     ここは教員専用です→
+    <input type="button" value=" 教員新規登録 " onclick="myEnter()">
+     </form>
+
     </c:param>
 </c:import>

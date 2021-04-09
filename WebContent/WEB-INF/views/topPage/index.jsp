@@ -90,9 +90,13 @@
 
         </c:if>
 
-
+        <c:if test="${sessionScope.login_student.admin_flag == 0}">
         <p><a href="<c:url value='/students/edit?id=${sessionScope.login_student.id}' />">自分の基本情報を編集する</a></p>
+        </c:if>
 
+        <c:if test="${sessionScope.login_student.admin_flag == 1}">
+        <p><a href="<c:url value='/students/edit2?id=${sessionScope.login_student.id}' />">自分の基本情報を編集する</a></p>
+        </c:if>
 
     </c:param>
 </c:import>

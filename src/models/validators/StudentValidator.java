@@ -17,6 +17,11 @@ public class StudentValidator {
             errors.add(code_error);
         }
 
+        String code_error2 = validateCode2(e.getCode());
+        if(!code_error2.equals("")) {
+            errors.add(code_error2);
+        }
+
         String name_error = validateName(e.getName());
         if(!name_error.equals("")) {
             errors.add(name_error);
@@ -59,6 +64,14 @@ public class StudentValidator {
 
         return "";
     }
+    private static String validateCode2(String code) {
+        if(!code.matches("^[0-9]*$")) {
+            return "半角数字以外は使えません。";
+        }
+
+        return "";
+    }
+
 
     // 社員名の必須入力チェック
     private static String validateName(String name) {

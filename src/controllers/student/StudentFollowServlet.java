@@ -36,11 +36,12 @@ public class StudentFollowServlet extends HttpServlet {
 
         Student e = (Student)request.getSession().getAttribute("login_student");
 
-        String code = e.getCode();
+        Integer id = e.getId();
+
+        Student teacher = em.find(Student.class,id);
 
         Follow g = new Follow();
 
-        Student teacher = em.find(Student.class,Integer.parseInt(code));
         g.setTeacher(teacher);
 
         Student student = em.find(Student.class,Integer.parseInt(request.getParameter("id")));

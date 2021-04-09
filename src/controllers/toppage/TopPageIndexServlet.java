@@ -37,7 +37,7 @@ public class TopPageIndexServlet extends HttpServlet {
 
         Student login_student = (Student)request.getSession().getAttribute("login_student");
 
-        Student mynumber = em.find(Student.class,Integer.parseInt(login_student.getCode()));
+        Student mynumber = em.find(Student.class,(login_student.getId()));
 
         int page;
         try{

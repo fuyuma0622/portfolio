@@ -7,7 +7,7 @@
                 <h2>id : ${student.id} のmy情報　編集ページ</h2>
                 <p>（パスワードは変更する場合のみ入力してください）</p>
                 <form method="POST" action="<c:url value='/students/update' />">
-                    <c:import url="_form.jsp" />
+                    <c:import url="_form2.jsp" />
                 </form>
 
                 <p><a href="#" onclick="confirmDestroy();">この情報を削除する</a></p>

@@ -41,7 +41,7 @@ public class LoginFilter implements Filter {
         String servlet_path = ((HttpServletRequest)request).getServletPath();
 
         // CSSフォルダ内と基本情報登録は認証処理から除外する
-        if(!servlet_path.matches("/css.*") && !servlet_path.matches("/students.new")) {
+        if(!servlet_path.matches("/css.*") && !servlet_path.matches("/students.new") && !servlet_path.matches("/students.teacher") && !servlet_path.matches("/students.new2")) {
 
             if(!servlet_path.matches("/students.create")){
 

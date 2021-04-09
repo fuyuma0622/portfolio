@@ -2,15 +2,14 @@ package controllers.login;
 //実装済み
 import java.io.IOException;
 
-import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Student;
-import utils.DBUtil;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -33,10 +32,11 @@ public class LogoutServlet extends HttpServlet {
 
 
         //追加部分
-        EntityManager em = DBUtil.createEntityManager();
+        HttpSession session = ((HttpServletRequest)request).getSession();
 
-        Student e = em.find(Student.class, (Integer)(request.getSession().getAttribute("student_id")));
-        if(e.getDelete_flag() == 1) {
+        // セッションスコープに保存された従業員（ログインユーザ）情報を取得
+        Student p = (Student)session.getAttribute("login_student");
+        if(p.getDelete_flag() == 1) {
             request.getSession().removeAttribute("login_student");
             response.sendRedirect(request.getContextPath() + "/login");
         }else{
