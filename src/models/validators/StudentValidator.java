@@ -32,6 +32,11 @@ public class StudentValidator {
             errors.add(faculty_error);
         }
 
+        String department_error = validateDepartment(e.getDepartment());
+        if(!department_error.equals("")) {
+            errors.add(department_error);
+        }
+
         String password_error = validatePassword(e.getPassword(), passwordCheckFlag);
         if(!password_error.equals("")) {
             errors.add(password_error);
@@ -49,7 +54,7 @@ public class StudentValidator {
     private static String validateCode(String code, Boolean codeDuplicateCheckFlag) {
         // 必須入力チェック
         if(code == null || code.equals("")) {
-            return "社員番号を入力してください。";
+            return "IDを入力してください。";
         }
 
         // すでに登録されている社員番号との重複チェック
@@ -85,6 +90,14 @@ public class StudentValidator {
     private static String validateFaculty(String faculty) {
         if(faculty == null || faculty.equals("")) {
             return "学部を選択してください。";
+        }
+
+        return "";
+    }
+
+    private static String validateDepartment(String department) {
+        if(department == null || department.equals("")) {
+            return "学科を選択してください。";
         }
 
         return "";

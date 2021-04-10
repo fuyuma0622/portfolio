@@ -36,7 +36,7 @@
 
 <label for="department">学科</label><br />
 <select size="1" name="department" id="departmentList" disabled>
-<option disabled selected>学科を選択してください</option>
+<option disabled selected value="">学科を選択してください</option>
 </select>
 <br /><br />
 

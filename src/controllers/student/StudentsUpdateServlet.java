@@ -81,7 +81,7 @@ public class StudentsUpdateServlet extends HttpServlet {
                 request.setAttribute("student", e);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/studnets/edit.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/students/edit.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
