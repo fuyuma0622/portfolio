@@ -4,7 +4,7 @@
     <c:param name="content">
         <h2>課題提出広場　新規登録ページ</h2>
 
-        <form method="POST" action="<c:url value='/students/create' />">
+        <form method="POST" action="<c:url value='/students/create2' />">
             <c:import url="_form2.jsp" />
         </form>
 
