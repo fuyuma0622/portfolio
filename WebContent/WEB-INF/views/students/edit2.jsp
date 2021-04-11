@@ -6,6 +6,7 @@
             <c:when test="${student != null}">
                 <h2>id : ${student.id} のmy情報　編集ページ</h2>
                 <p>（パスワードは変更する場合のみ入力してください）</p>
+                <p>（学科を変更する際は学部から選択しなおしてください）</p>
                 <form method="POST" action="<c:url value='/students/update2' />">
                     <c:import url="_form2.jsp" />
                 </form>

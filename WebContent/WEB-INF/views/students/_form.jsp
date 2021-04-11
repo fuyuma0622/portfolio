@@ -19,13 +19,20 @@
 <option value="2年">2年</option>
 <option value="3年">3年</option>
 <option value="4年">4年</option>
-<option value="教員">教員</option>
 </select>
 <br /><br />
 
 <label for="faculty">学部</label><br />
 <select size="1" name="faculty" id="genre" onchange="createMenu(this.value)">
-<option value="">学部を選択してください</option>
+
+<c:if test="${student.faculty == null}">
+<option value="" selected>学部を選択してください</option>
+</c:if>
+
+<c:if test="${student.faculty != null}">
+<option value="${student.faculty}" selected>${student.faculty}</option>
+</c:if>
+
 <option value="文学部">文学部</option>
 <option value="経済学部">経済学部</option>
 <option value="法学部">法学部</option>
@@ -35,8 +42,14 @@
 
 
 <label for="department">学科</label><br />
-<select size="1" name="department" id="departmentList" disabled>
-<option disabled selected value="">学科を選択してください</option>
+<select size="1" name="department" id="departmentList">
+<c:if test="${student.department == null}">
+<option disabled selected>学科を選択してください</option>
+</c:if>
+
+<c:if test="${student.department != null}">
+<option value="${student.department}" selected>${student.department}</option>
+</c:if>
 </select>
 <br /><br />
 

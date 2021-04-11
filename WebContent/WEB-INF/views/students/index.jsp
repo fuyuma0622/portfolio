@@ -49,6 +49,7 @@
 
                       if(txt.match(re2) != null){
                           $(this).show();
+
                           }else{
                               $(this).hide();
                               }
@@ -69,8 +70,7 @@
 
 
         <%-- ここからテーブル --%>
-
-        <table id="student_list">
+        <table id="student_id">
             <tbody>
                 <tr>
                     <th>ID</th>
@@ -81,6 +81,12 @@
                     <th>操作1</th>
                     <th>操作2</th>
                 </tr>
+                </tbody>
+        </table>
+
+        <table id="student_list">
+            <tbody>
+
                 <c:forEach var="student" items="${students}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${student.code}" /></td>
