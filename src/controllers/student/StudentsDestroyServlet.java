@@ -1,5 +1,5 @@
 package controllers.student;
-//実装済み
+
 import java.io.IOException;
 import java.sql.Timestamp;
 

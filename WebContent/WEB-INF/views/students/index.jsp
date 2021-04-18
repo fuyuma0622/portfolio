@@ -33,7 +33,6 @@
             </form>
         </div>
 
-
         <script>$(function(){
             $("#button").bind("click",function(){
 
@@ -63,11 +62,6 @@
                 $("#student_list tr").show();
                 });
     });</script>
-
-
-
-
-
 
         <%-- ここからテーブル --%>
         <table id="student_id">
@@ -136,8 +130,6 @@
                 </c:choose>
             </c:forEach>
         </div>
-
-        <%-- 後で表示の条件付ける --%>
 
         <p><a href="<c:url value='/login' />">マイページに戻る</a></p>
 

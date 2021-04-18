@@ -1,5 +1,5 @@
 package controllers.login;
-//実装済み
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -31,10 +31,9 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        //追加部分
+
         HttpSession session = ((HttpServletRequest)request).getSession();
 
-        // セッションスコープに保存された従業員（ログインユーザ）情報を取得
         Student p = (Student)session.getAttribute("login_student");
         if(p.getDelete_flag() == 1) {
             request.getSession().removeAttribute("login_student");

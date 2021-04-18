@@ -1,5 +1,5 @@
 package controllers.report;
-//実装済み
+
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -43,8 +43,6 @@ public class ReportsCreateServlet extends HttpServlet {
             Report r = new Report();
 
             r.setStudent((Student)request.getSession().getAttribute("login_student"));
-
-
 
             Date report_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("report_date");

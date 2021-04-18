@@ -10,7 +10,7 @@
         </c:if>
         <h2>生徒課題広場ようこそ</h2>
 
-
+        <%-- 教員のみ表示 --%>
         <c:if test="${sessionScope.login_student.admin_flag == 1}">
 
         <h3>【担当生徒のレポート一覧】</h3>
@@ -50,6 +50,7 @@
 
         </c:if>
 
+        <%-- 生徒のみ表示 --%>
         <c:if test="${sessionScope.login_student.admin_flag == 0}">
 
         <h3>【自分のレポート一覧】</h3>

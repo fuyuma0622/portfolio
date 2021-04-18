@@ -1,5 +1,5 @@
 package models;
-//実装済み
+
 import java.sql.Timestamp;
 
 import javax.persistence.Column;

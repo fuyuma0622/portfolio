@@ -38,12 +38,12 @@
          alert( "パスワードが違います!" );
         }
       }
-     // --></script>
+  // --></script>
 
-    <form>
-     ここは教員専用です→
-    <input type="button" value=" 教員新規登録 " onclick="myEnter()">
-     </form>
+        <form>
+             ここは教員専用です→
+            <input type="button" value=" 教員新規登録 " onclick="myEnter()">
+        </form>
 
     </c:param>
 </c:import>

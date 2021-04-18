@@ -1,5 +1,5 @@
 package controllers.report;
-//実装済み
+
 import java.io.IOException;
 import java.util.List;
 

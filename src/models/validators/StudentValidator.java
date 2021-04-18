@@ -42,11 +42,6 @@ public class StudentValidator {
             errors.add(password_error);
         }
 
-
-
-
-
-
         return errors;
     }
 
@@ -69,6 +64,8 @@ public class StudentValidator {
 
         return "";
     }
+
+    // 半角数字チェック
     private static String validateCode2(String code) {
         if(!code.matches("^[0-9]*$")) {
             return "半角数字以外は使えません。";
@@ -76,7 +73,6 @@ public class StudentValidator {
 
         return "";
     }
-
 
     // 社員名の必須入力チェック
     private static String validateName(String name) {
@@ -87,6 +83,7 @@ public class StudentValidator {
         return "";
     }
 
+    // 学部の必須選択チェック
     private static String validateFaculty(String faculty) {
         if(faculty == null || faculty.equals("")) {
             return "学部を選択してください。";
@@ -95,6 +92,7 @@ public class StudentValidator {
         return "";
     }
 
+    // 学科の必須選択チェック
     private static String validateDepartment(String department) {
         if(department == null || department.equals("")) {
             return "学科を選択してください。";
@@ -102,7 +100,6 @@ public class StudentValidator {
 
         return "";
     }
-
 
     // パスワードの必須入力チェック
     private static String validatePassword(String password, Boolean passwordCheckFlag) {
@@ -112,11 +109,5 @@ public class StudentValidator {
         }
         return "";
     }
-
-
-
-
-
-
 
 }

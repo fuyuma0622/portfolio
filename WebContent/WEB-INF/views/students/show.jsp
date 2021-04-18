@@ -40,9 +40,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <c:if test="${sessionScope.login_student.id == student.id}">
-                <p><a href="<c:url value='/students/edit?id=${student.id}' />">この情報を編集する</a></p>
-                </c:if>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>

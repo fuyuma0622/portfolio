@@ -16,8 +16,6 @@ import javax.persistence.Table;
         name = "removeFollow",
         query = "SELECT f FROM Follow AS f WHERE f.teacher = :teacher AND f.etudiant = :etudiant"
     )
-
-
 })
 @Entity
 public class Follow {
@@ -58,6 +56,5 @@ public class Follow {
     public void setEtudiant(Student etudiant) {
         this.etudiant = etudiant;
     }
-
 
 }

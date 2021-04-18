@@ -1,5 +1,5 @@
 package models;
-//実装済み
+
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -128,6 +128,5 @@ public class Report {
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
     }
-
 
 }

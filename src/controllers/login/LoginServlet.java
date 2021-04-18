@@ -1,5 +1,5 @@
 package controllers.login;
-//実装済み
+
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
@@ -55,7 +55,6 @@ public class LoginServlet extends HttpServlet {
 
         String code = request.getParameter("code");
         String plain_pass = request.getParameter("password");
-
 
         Student e = null;
 
